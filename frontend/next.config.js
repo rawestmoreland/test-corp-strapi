@@ -1,6 +1,6 @@
 module.exports = {
-  i18n: {
-    locales: ['en', 'fr'],
-    defaultLocale: 'en',
+  images: {
+    domains: ['localhost', 'res.cloudinary.com', 'dl.airtable.com'],
+    loader: 'custom',
   },
-}
+};

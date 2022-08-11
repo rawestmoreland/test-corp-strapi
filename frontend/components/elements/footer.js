@@ -7,9 +7,9 @@ const Footer = ({ footer }) => {
   return (
     <footer className="pt-12 bg-gray-100">
       <div className="container flex flex-col lg:flex-row lg:justify-between">
-        <div>
+        <div className="w-40 h-40">
           {footer.logo && (
-            <NextImage width="120" height="33" media={footer.logo} />
+            <NextImage media={footer.logo} />
           )}
         </div>
         <nav className="flex flex-wrap flex-row lg:gap-20 items-start lg:justify-end mb-10">
