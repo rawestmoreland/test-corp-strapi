@@ -1,11 +1,19 @@
-const path = require('path');
-
+const parse = require("pg-connection-string").parse;
+const config =
+  process.env.DATABASE_URL || process.env.HEROKU_POSTGRESQL_COPPER
+    ? parse(process.env.DATABASE_URL || process.env.HEROKU_POSTGRESQL_COPPER)
+    : null;
 module.exports = ({ env }) => ({
   connection: {
-    client: 'sqlite',
+    client: "postgres",
     connection: {
-      filename: path.join(__dirname, '..', env('DATABASE_FILENAME', '.tmp/data.db')),
+      host: config?.host || "127.0.0.1",
+      port: config?.post || 5432,
+      database: config?.database || "strapi",
+      user: config?.user || "strapi",
+      password: config?.password || "strapi",
+      ssl: !config ? false : { rejectUnauthorized: false },
     },
-    useNullAsDefault: true,
+    debug: false,
   },
 });
